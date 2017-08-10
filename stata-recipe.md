@@ -13,8 +13,12 @@ Recipe
 ------
 ```
 /* set the local install versions to the project directory */
-sysdir set PLUS "/home/user/tmp/stata"
-sysdir set PERSONAL "/home/user/tmp/stata"
+/* this will ensure that the project directory contains a local copy */
+/* Ensure the directories exist! */
+global PROJDIR "/projects/user/xyz/project1"
+sysdir set PLUS "${PROJDIR}/stata/plus"
+sysdir set PERSONAL "${PROJDIR}/stata/personal"
+
 /* from https://www2.vrdc.cornell.edu/news/synthetic-data-server/step-4-using-the-sds/#Packages 
    and https://gist.github.com/larsvilhuber/002ffc7fa96136426a4801e1470e0189#file-sds_initialize-do */
 
@@ -30,5 +34,5 @@ net install rdrobust, from(${RDPACK}) replace
 
 Caveats
 -------
-- For Stata, this needs to be adjusted for each command, ordered by first letter of command
+- For Stata packages on RePEC, this needs to be adjusted for each command, ordered by first letter of command
 
