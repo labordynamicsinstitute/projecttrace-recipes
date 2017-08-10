@@ -15,3 +15,20 @@ Recipe
 /* set the local install versions to the project directory */
 sysdir set PLUS "/home/user/tmp/stata"
 sysdir set PERSONAL "/home/user/tmp/stata"
+/* from https://www2.vrdc.cornell.edu/news/synthetic-data-server/step-4-using-the-sds/#Packages 
+   and https://gist.github.com/larsvilhuber/002ffc7fa96136426a4801e1470e0189#file-sds_initialize-do */
+
+/* define all source directories here */
+global REPEC "/cac/contrib/mirror/fmwww.bc.edu/repec/bocode"
+global RDPACK "/cac/contrib/mirror/sites.google.com/site/rdpackages/rdrobust/stata"
+
+/* install all packages here */
+net install estout, from(${REPEC}/e) replace
+net install rdrobust, from(${RDPACK}) replace
+
+```
+
+Caveats
+-------
+- For Stata, this needs to be adjusted for each command, ordered by first letter of command
+
